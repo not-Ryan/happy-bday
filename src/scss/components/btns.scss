@@ -1,0 +1,115 @@
+@use "../partials/colors" as *;
+
+a.btn.btn-style-one {
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  line-height: 27px;
+  padding: 8px 36px;
+  background: $color-1;
+  border: 1px solid $color-1;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+
+  &:hover {
+    color: $color-1;
+    border: 1px solid $color-1;
+    background: $white;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+  }
+}
+
+a.btn.btn-style-two {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+  line-height: 27px;
+  padding: 8px 36px;
+  background: #f4f4f4;
+  border: 1px solid #ececec;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+
+  &:hover {
+    color: $white;
+    border: 1px solid $color-1;
+    background: $color-1;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+  }
+}
+
+a.btn.btn-style-three {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-1;
+  line-height: 27px;
+  padding: 6px 24px;
+  border: 2px solid $color-1;
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+
+  &.small {
+    padding: 4px 12px;
+    border: 2px solid $color-1;
+  }
+
+  &:hover {
+    color: $color-2;
+    border: 2px solid $color-2;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+  }
+}
+
+a.btn {
+  i.fas,
+  i.far,
+  i.fal,
+  i.fab,
+  i.fad {
+    font-size: 1.4em;
+    top: 4px;
+    position: relative;
+
+    &:not(.right),
+    &.left {
+      margin-left: -8px;
+      right: 4px;
+    }
+    &.right {
+      margin-right: -8px;
+      left: 4px;
+    }
+  }
+}

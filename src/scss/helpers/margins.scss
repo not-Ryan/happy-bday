@@ -1,0 +1,49 @@
+@use "sass:string" as string;
+@use '../partials/screen';
+
+$sides: all, top, bottom, left, right, x, y;
+$types: margin, padding;
+
+@mixin populate($type, $amount, $side) {
+  @if $side == x {
+    #{$type}-left: $amount !important;
+    #{$type}-right: $amount !important;
+  } @else if $side == y {
+    #{$type}-top: $amount !important;
+    #{$type}-bottom: $amount !important;
+  } @else if $side == all {
+    #{$type}: $amount;
+  } @else {
+    #{$type}-#{$side}: $amount !important;
+  }
+}
+
+@for $i from 0 through 16 {
+  $amount: ($i * 4px);
+  @each $type in $types {
+    $t: str-slice($type, 0, 1);
+    @each $side in $sides {
+      $s: str-slice($side, 0, 1);
+
+      .#{$t}#{$s}-#{$i} {
+        @include populate($type, $amount, $side);
+      }
+
+      .#{$t}#{$s}-n#{$i} {
+        @include populate($type, -$amount, $side);
+      }
+
+      @include screen.each("#{$t}#{$s}-", "-#{$i}") {
+        @include populate($type, $amount, $side);
+      }
+
+      @include screen.each("#{$t}#{$s}-", "-n#{$i}") {
+        @include populate($type, -$amount, $side);
+      }
+
+      .#{$t}#{$s}-auto {
+        @include populate($type, auto, $side);
+      }
+    }
+  }
+}

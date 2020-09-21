@@ -1,0 +1,56 @@
+@use '../partials/screen';
+
+.vflex {
+  display: flex;
+  &.horizontal,
+  &:not(.vertical) {
+    width: 100%;
+  }
+  &.vertical {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Justifying content horizontally */
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.space-evenly {
+    justify-content: space-evenly;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.left {
+    justify-content: start;
+  }
+  &.right {
+    justify-content: end;
+  }
+
+  /* Aligning content vertically */
+  &.top {
+    align-items: flex-start;
+  }
+  &.bottom {
+    align-items: flex-end;
+  }
+  &.middle {
+    align-items: center;
+  }
+  &.stretch {
+    align-items: stretch;
+  }
+  &.baseline {
+    align-items: baseline;
+  }
+
+  @for $size from 0 through 12 {
+    .grow-#{$size} {
+      flex-grow: $size;
+    }
+    .shrink-#{$size} {
+      flex-shrink: $size;
+    }
+  }
+}

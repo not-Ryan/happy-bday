@@ -1,0 +1,145 @@
+@use "./partials/colors" as *;
+
+$thin-border: 2px solid $color-red;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-red;
+  color: $color-black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat";
+  font-weight: 700;
+  min-height: 100vh;
+}
+
+main {
+  background-color: $color-cream;
+  box-shadow: 0px 0px 0px 2px $color-red, 10px 10px 20px 10px fade-out($color-black, 0.5);
+  flex-basis: 980px;
+}
+
+.calendar {
+  table-display: fixed;
+  border: $thin-border;
+  width: 100%;
+}
+
+.calendar__day__header,
+.calendar__day__cell {
+  border: $thin-border;
+  text-align: center;
+
+  width: 100% / 7; // fix width
+  vertical-align: middle;
+  &:first-child {
+    border-left: none;
+  }
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.calendar__day__header,
+.calendar__day__cell {
+  padding: 0.75rem 0 1.5rem;
+}
+
+.calendar__banner--month {
+  border: $thin-border;
+  border-bottom: none;
+  text-align: center;
+  padding: 0.75rem;
+  h1 {
+    background-color: $color-black;
+    color: $color-cream;
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 2rem;
+    text-transform: uppercase;
+  }
+}
+
+.calendar__day__header {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.calendar__day__cell {
+  font-size: 4rem;
+  position: relative;
+}
+
+tr:nth-child(odd) > .calendar__day__cell:nth-child(odd) {
+  color: $color-red;
+}
+
+tr:nth-child(even) > .calendar__day__cell:nth-child(even) {
+  color: $color-red;
+}
+
+.calendar__day__cell.dim-day {
+  opacity: 0.41 !important;
+}
+
+.calendar__day__cell[data-event] {
+  &:nth-child(odd) {
+    background-color: $color-red;
+  }
+  &:nth-child(even) {
+    background-color: $color-black;
+  }
+  color: $color-black;
+  &:after {
+    content: attr(data-event);
+    color: $color-cream;
+    display: block;
+    font-weight: 400;
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+// .calendar__day__cell[data-bank-holiday] {
+//   background-color: $color-black;
+//   border-color: $color-black;
+
+//   border-bottom: none;
+//   color: $color-cream;
+//   &:after {
+//     content: attr(data-bank-holiday);
+//     color: $color-cream;
+//     display: block;
+//     font-size: 0.75rem;
+//     font-weight: 400;
+//     position: absolute;
+//     bottom: 0;
+//     width: 100%;
+//     height: 1rem;
+//     text-transform: uppercase;
+//   }
+// }
+
+.footer {
+  box-shadow: 0px 0px 0px 2px $color-red, 10px 10px 20px 10px fade-out($color-black, 0.5);
+  background: $color-red;
+  border-top-right-radius: 8px;
+  padding: 8px;
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}

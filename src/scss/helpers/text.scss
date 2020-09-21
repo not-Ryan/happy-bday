@@ -1,0 +1,28 @@
+$fonts: (
+  "thin": 100,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+  "black": 900,
+);
+
+@each $name, $amount in $fonts {
+  .font-weight-#{$name} {
+    font-weight: $amount !important;
+  }
+}
+
+$alignments: left, right, center;
+@each $align in $alignments {
+  .text-#{$align} {
+    text-align: $align;
+  }
+}
+
+$vertical-aligns: top, bottom, middle, baseline;
+@each $align in $vertical-aligns {
+  .text-#{$align} {
+    vertical-align: $align;
+  }
+}

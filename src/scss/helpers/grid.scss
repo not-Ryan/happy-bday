@@ -1,0 +1,103 @@
+@use '../partials/screen';
+
+$-sizes: map-keys(screen.$size-rules);
+
+.vrow:not(.no-gutters) .vcol {
+  @extend .pa-3;
+}
+
+.vrow {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+
+  .vcol {
+    width: 100%;
+
+    @for $cols from 1 through 12 {
+      $amount: floor(100% / 12 * $cols);
+
+      &.all-#{$cols} {
+        max-width: $amount;
+        flex: 0 0 $amount;
+      }
+
+      @each $size, $features in screen.$size-rules {
+        @media #{$features} {
+          &.#{$size}-#{$cols} {
+            max-width: $amount;
+            flex: 0 0 $amount;
+          }
+        }
+      }
+
+      // ? For every size ...
+      @each $size in $-sizes {
+        $index: index($-sizes, $size);
+
+        // ? ... add an {size}-up query
+        @for $addIndex from $index through length($-sizes) {
+          $newSize: nth($-sizes, $addIndex);
+          $features: map-get(screen.$size-rules, $newSize);
+          @media #{$features} {
+            &.#{$size}-up-#{$cols} {
+              max-width: $amount;
+              flex: 0 0 $amount;
+            }
+          }
+        }
+
+        // ? ... add an {size}-down query
+        @for $addIndex from 1 through $index {
+          $newSize: nth($-sizes, $addIndex);
+          $features: map-get(screen.$size-rules, $newSize);
+          @media #{$features} {
+            &.#{$size}-down-#{$cols} {
+              max-width: $amount;
+              flex: 0 0 $amount;
+            }
+          }
+        }
+      }
+    }
+
+    @each $size, $features in screen.$size-rules {
+      @media #{$features} {
+        &.#{$size}-hide {
+          display: none;
+        }
+      }
+    }
+
+    // ? For every size ...
+    @each $size in $-sizes {
+      $index: index($-sizes, $size);
+
+      // ? ... add an {size}-up query
+      @for $addIndex from $index through length($-sizes) {
+        $newSize: nth($-sizes, $addIndex);
+        $features: map-get(screen.$size-rules, $newSize);
+        @media #{$features} {
+          &.#{$size}-up-hide {
+            display: none;
+          }
+        }
+      }
+
+      // ? ... add an {size}-down query
+      @for $addIndex from 1 through $index {
+        $newSize: nth($-sizes, $addIndex);
+        $features: map-get(screen.$size-rules, $newSize);
+        @media #{$features} {
+          &.#{$size}-down-hide {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.width-100 {
+  width: 100%;
+}

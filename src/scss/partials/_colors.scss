@@ -1,0 +1,48 @@
+$colors: (
+  "1": #d96a6a,
+  "2": #d99177,
+  "3": #f2c791,
+  "4": #f2dc99,
+  "5": #eff29b,
+);
+
+$color-1: map-get($colors, "1");
+$color-2: map-get($colors, "2");
+$color-3: map-get($colors, "3");
+$color-4: map-get($colors, "4");
+$color-5: map-get($colors, "5");
+
+$color-red: #e66053;
+$color-black: #4e4f4a;
+$color-cream: #f6e9dc;
+
+$white: #fafafa;
+$dimmed-white: #e0e0e0;
+$text-main: $color-black;
+$text-accent: $color-red;
+
+@for $i from 1 through 5 {
+  .text--clr-#{$i} {
+    color: map-get($colors, "#{$i}") !important;
+  }
+  .text--clr-#{$i}-duo::before {
+    color: map-get($colors, "#{$i}") !important;
+  }
+  .outlined-clr-#{$i} {
+    outline: solid 2px map-get($colors, "#{$i}") !important;
+  }
+
+  .clr-#{$i} {
+    background: map-get($colors, "#{$i}") !important;
+  }
+}
+
+.white--text {
+  color: $white !important;
+}
+.cream--text {
+  color: $color-cream !important;
+}
+.accent--text {
+  color: $color-cream !important;
+}

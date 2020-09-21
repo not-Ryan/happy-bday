@@ -1,0 +1,99 @@
+@use '../partials/screen';
+@use "../partials/colors" as clr;
+
+@mixin base {
+  i.fas,
+  i.fab,
+  i.fad,
+  i.fal,
+  i.far {
+    line-height: inherit;
+  }
+}
+
+.display-4 {
+  font-size: 60px;
+  line-height: 1.1em;
+  @include screen.sm {
+    font-size: 50px;
+  }
+  text-transform: capitalize;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+}
+
+.display-2 {
+  @include base;
+  font-size: 40px;
+  line-height: 1.1;
+  color: #000;
+  text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  margin-bottom: 40px;
+  position: relative;
+
+  .accent {
+    display: inline;
+    color: clr.$color-2;
+  }
+  &.center {
+    text-align: center;
+    &:before {
+      right: 45%;
+      right: calc(50% - 25px);
+    }
+  }
+  &.right {
+    text-align: right;
+    &:before {
+      right: 0;
+    }
+  }
+  &:before {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    content: "";
+    bottom: -10px;
+    background: clr.$color-1;
+  }
+}
+
+.display-1 {
+  @include base;
+  font-size: 32px;
+  font-weight: bold;
+  opacity: 1;
+  line-height: 1.3;
+}
+
+.title {
+  @include base;
+  font-size: 24px;
+  font-weight: 500;
+  opacity: 1;
+  line-height: 1.3;
+}
+
+.subtitle {
+  @include base;
+  font-size: 18px;
+  opacity: 0.8;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.body-1 {
+  @include base;
+  font-size: 12px;
+  line-height: 22px;
+  display: block;
+}
+
+.body-2 {
+  @include base;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 30px;
+}

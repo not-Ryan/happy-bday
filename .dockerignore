@@ -1,0 +1,10 @@
+node_modules/
+dist/
+
+.gitignore
+.dockerignore
+
+Dockerfile
+changelog.config.js
+
+docker-compose*

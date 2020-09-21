@@ -1,0 +1,15 @@
+- const prod = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'production';
+
+include /app/head.pug
+
+body
+  main
+
+    block content
+
+  include /app/footer.pug
+
+  .scroll-to-top.scroll-to-target(data-target='.header-top')
+    span.icon.fa.fa-angle-up
+
+  include /app/scripts.pug
